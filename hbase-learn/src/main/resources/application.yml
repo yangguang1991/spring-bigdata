@@ -1,0 +1,14 @@
+#appId
+#app:
+#  id: spring-bigdata
+# set apollo meta server address, adjust to actual address if necessary
+
+spring:
+  application:
+    name: spring-bigdata
+  profiles:
+    active: dev
+#hbase:
+#  conf:
+#  confMaps:
+#    'hbase.zookeeper.quorum' : 'cdh01-xin:2181,cdh02-xin:2181,cdh03-xin:2181'

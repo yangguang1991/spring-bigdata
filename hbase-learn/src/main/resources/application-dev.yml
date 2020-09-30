@@ -1,0 +1,59 @@
+server:
+  port: 51013
+#    template:
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+#-1或者all  意味着producer得到follwer确认，才发送下一条数据
+
+spring:
+  cloud:
+    #    inetutils:
+    #      ignored-interfaces:
+    #        - VMware.*
+    #      use-only-site-local-interfaces: true
+    consul:
+      host: 192.168.110.140
+      port: 8500
+      discovery:
+        register: true
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+  #  datasource:
+  #    url: jdbc:mysql://192.168.110.162:3306/security_platform?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=true
+  #    username: test
+  #    password: ymdx_123456
+  #    driver-class-name: com.mysql.jdbc.Driver
+  #    type: com.alibaba.druid.pool.DruidDataSource
+  #    druid:
+  #      max-active: 20
+  #      min-idle: 5
+  #      max-wait: 60000
+  #      time-between-eviction-runs-millis: 60000
+  #      min-evictable-idle-time-millis: 300000
+  #      test-while-idle: true
+  #      test-on-borrow: false
+  #      filter:
+  #        stat:
+  #          log-slow-sql: true
+  kafka:
+    bootstrap-servers: 192.168.110.153:9092
+    producer:
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+  redis:
+    timeout: 20000
+    host: 192.168.110.164
+    port: 6379
+    password: 93ormKe+4rc4aWLzohh8+jieshen
